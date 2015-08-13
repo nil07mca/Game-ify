@@ -13,13 +13,15 @@
 @property(nonatomic,strong) UIImage *questionImg;
 @property (nonatomic,strong) NSString *questionStandFirst;
 @property (nonatomic,strong) NSString *questionStoryUrl;
-@property (assign) BOOL isWrongAnswer;
-@property (assign) int totalPoint ;
-@property (assign) int pointGained ;
+
 @property (nonatomic,weak) IBOutlet UIImageView *imgView;
 @property (nonatomic,weak) IBOutlet UILabel *standFirstLbl;
 @property (nonatomic,weak) IBOutlet UILabel *totalScoreLbl;
 @property (nonatomic,weak) IBOutlet UILabel *answerStatusLbl;
+
+@property (assign) BOOL isWrongAnswer;
+@property (assign) int totalPoint ;
+@property (assign) int pointGained ;
 
 -(IBAction)nextQuestionAction:(id)sender;
 -(IBAction)readArticleAction:(id)sender;

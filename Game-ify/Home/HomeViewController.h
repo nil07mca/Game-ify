@@ -8,13 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "DataManager.h"
-#import "CustomProgressView.h"
 
 
 @interface HomeViewController : UIViewController<DataManagerDelegate>
 
 @property (nonatomic,weak) IBOutlet UIActivityIndicatorView *loadIndicator;
-@property (nonatomic,weak) IBOutlet CustomProgressView *progressView;
+@property (nonatomic,weak) IBOutlet UIProgressView *progressView;
 @property (nonatomic,weak) IBOutlet UIView *progressViewContainer;
 @property (nonatomic,weak) IBOutlet UIView *loaderView;
 

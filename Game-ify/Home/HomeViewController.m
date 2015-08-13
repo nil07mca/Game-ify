@@ -37,6 +37,7 @@
 
 #define SERVICE_URL @"https://dl.dropboxusercontent.com/u/30107414/game.json"
 #define MAX_POINT 10
+
 @implementation HomeViewController
 
 - (void)viewDidLoad {
@@ -48,15 +49,13 @@
     counter = 0;
     correctAnswerIndex = -1 ;
     
-    
-    
-    
     // Do any additional setup after loading the view from its nib.
 }
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    [_progressViewContainer.layer setBorderWidth:1.0];
+    [_progressViewContainer.layer setBorderWidth:0.0];
     [_progressViewContainer.layer setBorderColor:[[UIColor whiteColor] CGColor]];
     
     _progressView.frame = CGRectMake(_progressView.frame.origin.x, _progressView.frame.origin.y, _progressView.frame.size.width, 27);
@@ -69,6 +68,14 @@
     img = [img resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
     _progressView.trackImage = img;
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UIAction
+
 /*
  This method gets fired after pressing Skip! I give up button. It starts loading next question.
  */
@@ -102,9 +109,11 @@
     }
     
 }
+
+#pragma mark - Navigation
 /*
-This method navigate the user to the detail screen
-*/
+ This method navigate the user to the detail screen
+ */
 -(void)goToDetailsPage{
     
     DetailsViewController* details = [[DetailsViewController alloc] initWithNibName:@"DetailsViewController" bundle:[NSBundle mainBundle]];
@@ -126,19 +135,20 @@ This method navigate the user to the detail screen
     details.totalPoint = currentPoint;
     [self.navigationController pushViewController:details animated:YES];
 }
+
 #pragma mark - DataManagerDelegate
+
 -(void)connectionDidCompleteWithData:(NSMutableArray*)arrData{
     arrRecords = arrData ;
     [self loadNewsForIndex:counter];
 }
+
 -(void)connectionFailedWithError:(NSError *)error{
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - GameLogic Helper
+
 /*
  This method resets the option buttons background color.
  */
@@ -150,8 +160,8 @@ This method navigate the user to the detail screen
 }
 
 /*
-This method is used to show/hide the views. It is required at the time of question loading to show the loader and hide other views.
-*/
+ This method is used to show/hide the views. It is required at the time of question loading to show the loader and hide other views.
+ */
 -(void)showHideViews:(BOOL)showHideStatus{
     
     for (UIView *subView in self.view.subviews) {
@@ -160,10 +170,60 @@ This method is used to show/hide the views. It is required at the time of questi
         [subView setHidden:showHideStatus];
     }
 }
+
 /*
-This method load next question.
-*/
+ This method is getting fired after every second. In this method we are updating the progress value for timer and text for time remaining.
+ */
+
+-(void)deductPoint{
+    point-- ;
+    float t = _progressView.progress;
+    _progressView.progress = t - 0.1;
+    [lblPoint setText:[NSString stringWithFormat:@"+%d",point]];
+    
+    if (point <= 0) {
+        [timer invalidate];
+        //Point can not be negetive
+        point = 0;
+    }
+}
+/*
+ This method is getting called from detail screen if user choose to load next question.
+ */
+
+-(void)loadNextQuestion{
+    counter++;
+    [lblPoint setText:[NSString stringWithFormat:@"%d",MAX_POINT]];
+    [self loadNewsForIndex:counter];
+}
+
+/*
+ This method Reset Game UI for Next Question.
+ */
+- (void) resetGameUIWithImage:(UIImage *)image {
+    [_loaderView setHidden:YES];
+    [_loadIndicator stopAnimating];
+    imgNews.image = image;
+    correctAnswerIndex = [currentQuestion.correctAnswerIndex intValue];
+    NSArray* options = currentQuestion.headlines;
+    if ([options count]>2) {
+        [btnOption1 setTitle:[options objectAtIndex:0] forState:UIControlStateNormal];
+        [btnOption2 setTitle:[options objectAtIndex:1] forState:UIControlStateNormal];
+        [btnOption3 setTitle:[options objectAtIndex:2] forState:UIControlStateNormal];
+    }
+    [self showHideViews:NO];
+    [_progressView setProgress:1.0];
+    point = MAX_POINT ;
+    isFirstWrong = NO ;
+    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(deductPoint) userInfo:nil repeats: YES];
+}
+
+/*
+ This method load next question.
+ */
 -(void)loadNewsForIndex:(int)index{
+    //Take weak refrence of self to handle memory retain cycle
+    __weak HomeViewController *weakSelf = self;
     
     [self showHideViews:YES];
     [self.view bringSubviewToFront:_loadIndicator];
@@ -182,53 +242,13 @@ This method load next question.
                 UIImage *image = [UIImage imageWithData:imgData];
                 if (image) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [_loaderView setHidden:YES];
-                        [_loadIndicator stopAnimating];
-                        imgNews.image = image;
-                        correctAnswerIndex = [currentQuestion.correctAnswerIndex intValue];
-                        NSArray* options = currentQuestion.headlines;
-                        if ([options count]>2) {
-                            [btnOption1 setTitle:[options objectAtIndex:0] forState:UIControlStateNormal];
-                            [btnOption2 setTitle:[options objectAtIndex:1] forState:UIControlStateNormal];
-                            [btnOption3 setTitle:[options objectAtIndex:2] forState:UIControlStateNormal];
-                        }
-                        [self showHideViews:NO];
-                        [_progressView setProgress:1.0];
-                        point = MAX_POINT ;
-                        isFirstWrong = NO ;
-                        timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(deductPoint) userInfo:nil repeats: YES];
+                        [weakSelf resetGameUIWithImage:image];
                     });
-                    
-                    
                 }
             }
         });
     }
 }
-/*
-This method is getting fired after every second. In this method we are updating the progress value for timer and text for time remaining.
-*/
 
--(void)deductPoint{
-   
-    [lblPoint setText:[NSString stringWithFormat:@"+%d",point]];
-    point-- ;
-    
-    float t = _progressView.progress;
-    _progressView.progress = t - 0.1;
-    if (point == 0) {
-        [timer invalidate];
-    }
-    
-}
-/*
-This method is getting called from detail screen if user choose to load next question. 
-*/
-
--(void)loadNextQuestion{
-    counter++;
-    [lblPoint setText:[NSString stringWithFormat:@"%d",MAX_POINT]];
-    [self loadNewsForIndex:counter];
-}
 
 @end

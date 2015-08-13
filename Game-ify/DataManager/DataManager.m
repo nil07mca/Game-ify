@@ -17,22 +17,21 @@
 @end
 
 @implementation DataManager
-@synthesize arrItems , strURL;
 
 - (id) initWithUrlString:(NSString*)str {
     if ( (self = [super init]) ) {
         // Initialization code here.
-        strURL = str ;
+        self.strURL = str ;
         
     }
     return self;
 }
 
 -(void)fetchNews{
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:strURL]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.strURL]];
     
     // Create url connection and fire request
-    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    __unused NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 #pragma mark - Connection
@@ -60,22 +59,12 @@
     // You can parse the stuff in your instance variable now
     NSError *error = nil;
     NSDictionary* dictResponse = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
-    NSArray *items = [dictResponse objectForKey:@"items"];
-    self.arrItems = [NSMutableArray array];
-    for (NSDictionary *eachItem in items) {
-        [self.arrItems addObject:[[QuestionDataModel alloc] initWithData:eachItem]];
-    }
-    //arrItems = [dictResponse objectForKey:@"items"];
-    if (error != nil) {
-        NSLog(@"Error parsing JSON.");
+    if (error) {
+        NSLog(@"Error Parsing JSON : %@", error.description);
     }
     else {
-        //NSLog(@"Array: %@", arrItems);
-        if ([self.delegate respondsToSelector:@selector(connectionDidCompleteWithData:)]) {
-            [self.delegate connectionDidCompleteWithData:arrItems];
-        }
+        [self parseFeedFromResponse:dictResponse];
     }
-    
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
@@ -86,7 +75,18 @@
     }
 }
 
+#pragma mark - Parsing Feed
 
 
+- (void) parseFeedFromResponse:(NSDictionary *)responseDictionary{
+    NSArray *items = [responseDictionary objectForKey:@"items"];
+    self.arrItems = [NSMutableArray array];
+    for (NSDictionary *eachItem in items) {
+        [self.arrItems addObject:[[QuestionDataModel alloc] initWithData:eachItem]];
+    }
+    if ([self.delegate respondsToSelector:@selector(connectionDidCompleteWithData:)]) {
+        [self.delegate connectionDidCompleteWithData:self.arrItems];
+    }
+}
 
 @end

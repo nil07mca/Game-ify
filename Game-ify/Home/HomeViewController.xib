@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
@@ -30,8 +30,8 @@
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0aK-An-x13">
                     <rect key="frame" x="25" y="289" width="269" height="29"/>
                     <subviews>
-                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="tU6-GG-Djk" customClass="CustomProgressView">
-                            <rect key="frame" x="0.0" y="1" width="269" height="2"/>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progressViewStyle="bar" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="tU6-GG-Djk">
+                            <rect key="frame" x="0.0" y="10" width="269" height="3"/>
                         </progressView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -77,7 +77,7 @@
                         <action selector="tapAnswer:" destination="-1" eventType="touchUpInside" id="4NG-4s-XJo"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1a-0O-GkE">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1a-0O-GkE">
                     <rect key="frame" x="45" y="537" width="229" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="Skip! I give up">
@@ -103,14 +103,18 @@
                         <action selector="tapAnswer:" destination="-1" eventType="touchUpInside" id="oln-F1-S5Q"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTK-YH-MaE">
-                    <rect key="frame" x="81" y="267" width="32" height="23"/>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="+10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTK-YH-MaE">
+                    <rect key="frame" x="57" y="267" width="40" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="5DA-gn-XjX"/>
+                        <constraint firstAttribute="height" constant="23" id="m4t-VM-Svf"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="points coming your way!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCB-mq-GoF">
-                    <rect key="frame" x="115" y="267" width="178" height="20"/>
+                    <rect key="frame" x="100" y="267" width="193" height="20"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -139,10 +143,8 @@
                 <constraint firstItem="R1a-0O-GkE" firstAttribute="top" secondItem="Tk7-Yt-nPM" secondAttribute="bottom" constant="17" id="67D-aC-Acu"/>
                 <constraint firstItem="3Yc-ZI-dic" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="84" id="7d6-fv-ffu"/>
                 <constraint firstAttribute="bottom" secondItem="R1a-0O-GkE" secondAttribute="bottom" constant="1" id="B9L-AH-egh"/>
-                <constraint firstAttribute="trailing" secondItem="wCB-mq-GoF" secondAttribute="trailing" constant="27" id="CPd-Jd-OOr"/>
                 <constraint firstItem="3Yc-ZI-dic" firstAttribute="top" secondItem="Evv-32-IO7" secondAttribute="bottom" constant="27" id="CfT-Xx-rVn"/>
                 <constraint firstItem="32p-BR-vXu" firstAttribute="leading" secondItem="Tk7-Yt-nPM" secondAttribute="leading" id="Chl-FL-fox"/>
-                <constraint firstItem="wCB-mq-GoF" firstAttribute="top" secondItem="3Yc-ZI-dic" secondAttribute="bottom" constant="13" id="EW4-dI-n4k"/>
                 <constraint firstAttribute="trailing" secondItem="Tk7-Yt-nPM" secondAttribute="trailing" constant="39" id="HWY-Vq-LJV"/>
                 <constraint firstItem="gdi-ld-XWA" firstAttribute="top" secondItem="32p-BR-vXu" secondAttribute="bottom" constant="7" id="J6K-Uv-rgy"/>
                 <constraint firstAttribute="centerX" secondItem="CwQ-yc-baX" secondAttribute="centerX" id="J8w-Sw-5W5"/>
@@ -157,20 +159,22 @@
                 <constraint firstItem="32p-BR-vXu" firstAttribute="leading" secondItem="gdi-ld-XWA" secondAttribute="leading" id="XxT-NA-JHf"/>
                 <constraint firstItem="TTK-YH-MaE" firstAttribute="top" secondItem="3Yc-ZI-dic" secondAttribute="bottom" constant="13" id="YUh-ls-sd3"/>
                 <constraint firstAttribute="trailing" secondItem="Evv-32-IO7" secondAttribute="trailing" constant="26" id="YpW-4U-Us2"/>
-                <constraint firstItem="TTK-YH-MaE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="81" id="frT-tW-bec"/>
+                <constraint firstItem="wCB-mq-GoF" firstAttribute="top" secondItem="TTK-YH-MaE" secondAttribute="top" id="byL-Yb-WUN"/>
+                <constraint firstItem="TTK-YH-MaE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="57" id="frT-tW-bec"/>
                 <constraint firstItem="0aK-An-x13" firstAttribute="top" secondItem="3Yc-ZI-dic" secondAttribute="bottom" constant="35" id="hVx-aB-uPs"/>
                 <constraint firstItem="Tk7-Yt-nPM" firstAttribute="top" secondItem="gdi-ld-XWA" secondAttribute="bottom" constant="7" id="hy6-uG-Uke"/>
                 <constraint firstAttribute="trailing" secondItem="R1a-0O-GkE" secondAttribute="trailing" constant="46" id="j0o-d6-QHm"/>
                 <constraint firstItem="Evv-32-IO7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="36" id="jVE-eM-Tki"/>
-                <constraint firstItem="wCB-mq-GoF" firstAttribute="leading" secondItem="TTK-YH-MaE" secondAttribute="trailing" constant="2" id="nN7-X7-kII"/>
                 <constraint firstItem="Tk7-Yt-nPM" firstAttribute="height" secondItem="32p-BR-vXu" secondAttribute="height" id="r4m-nM-xsj"/>
                 <constraint firstAttribute="centerX" secondItem="3Yc-ZI-dic" secondAttribute="centerX" id="s7N-Zw-SKB"/>
                 <constraint firstItem="32p-BR-vXu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="39" id="sfB-tj-tbf"/>
+                <constraint firstAttribute="trailing" secondItem="wCB-mq-GoF" secondAttribute="trailing" constant="27" id="vP3-4Q-WBW"/>
+                <constraint firstItem="wCB-mq-GoF" firstAttribute="leading" secondItem="TTK-YH-MaE" secondAttribute="trailing" constant="3" id="w4d-Ol-IAj"/>
                 <constraint firstItem="Tk7-Yt-nPM" firstAttribute="height" secondItem="gdi-ld-XWA" secondAttribute="height" id="xHF-Fl-0t9"/>
                 <constraint firstItem="gdi-ld-XWA" firstAttribute="height" secondItem="32p-BR-vXu" secondAttribute="height" id="yeh-wz-FsH"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="297.5" y="277.5"/>
+            <point key="canvasLocation" x="297" y="277"/>
         </view>
     </objects>
     <resources>

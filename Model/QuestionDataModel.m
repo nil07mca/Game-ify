@@ -10,9 +10,7 @@
 
 @implementation QuestionDataModel
 
-@synthesize correctAnswerIndex, imageUrl, standFirst, storyUrl, section, headlines;
-
--(id)initWithData:(NSDictionary *)questionData{
+-(id)initWithData:(NSDictionary *)questionData {
     if (self = [super init]) {
         self.correctAnswerIndex = [questionData valueForKey:@"correctAnswerIndex"];
         self.imageUrl = [questionData valueForKey:@"imageUrl"];

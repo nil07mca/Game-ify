@@ -7,6 +7,7 @@
 //
 
 #import "DetailsViewController.h"
+#import "BrowserViewController.h"
 
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *lblPoint;
@@ -43,25 +44,25 @@
 }
 
 /*
-This method is fired when Next Question button is pressed. In this method we fetch last viewcontroller with the UINavigationController and fire its method which starts loading of the next question.
-*/
+ This method is fired when Next Question button is pressed. In this method we fetch last viewcontroller with the UINavigationController and fire its method which starts loading of the next question.
+ */
 
 -(IBAction)nextQuestionAction:(id)sender{
     id homeViewController = [self.navigationController.viewControllers firstObject];
     if(!homeViewController)
         return;
-    #pragma clang diagnostic push
-    #pragma clang diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
     SEL selector = @selector(loadNextQuestion);
     
     
     if([homeViewController respondsToSelector:selector]){
-        #pragma clang diagnostic push
-        #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         [homeViewController performSelector:selector withObject:Nil];
-        #pragma clang diagnostic pop
+#pragma clang diagnostic pop
     }
-    #pragma clang diagnostic pop
+#pragma clang diagnostic pop
     NSLog(@"Next question pressed");
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -73,9 +74,13 @@ This method is fired when Next Question button is pressed. In this method we fet
     NSLog(@"Read article pressed");
     
     NSURL *url = [NSURL URLWithString:self.questionStoryUrl];
-    
-    if (![[UIApplication sharedApplication] openURL:url]) {
-        NSLog(@"%@%@",@"Failed to open url:",[url description]);
-    }
+    BrowserViewController *browser = [[BrowserViewController alloc] initWithNibName:@"BrowserViewController" bundle:nil];
+    browser.articleURL = url;
+    //    if (![[UIApplication sharedApplication] openURL:url]) {
+    //        NSLog(@"%@%@",@"Failed to open url:",[url description]);
+    //    }
+    [self presentViewController:browser animated:YES completion:^{
+        ;
+    }];
 }
 @end

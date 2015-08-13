@@ -16,6 +16,7 @@
 @property (nonatomic,strong) NSString *storyUrl;
 @property (nonatomic,strong) NSString *section;
 @property (nonatomic,strong) NSArray *headlines;
+
 -(id)initWithData:(NSDictionary *)questionData;
 
 @end

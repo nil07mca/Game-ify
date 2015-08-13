@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2A5FE6B41B7CA76A004149FA /* QuestionDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5FE6B31B7CA76A004149FA /* QuestionDataModel.m */; };
 		2A5FE6B61B7CB4E5004149FA /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A5FE6B51B7CB4E5004149FA /* logo.png */; };
-		2AA53A781B7C809100F6345A /* CustomProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA53A771B7C809100F6345A /* CustomProgressView.m */; };
 		2AA53A7C1B7C82CF00F6345A /* track_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AA53A7A1B7C82CF00F6345A /* track_image.png */; };
 		2AA53A7D1B7C82CF00F6345A /* progress_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AA53A7B1B7C82CF00F6345A /* progress_image.png */; };
 		82E898A61B7B42D500DBDDC5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E898A51B7B42D500DBDDC5 /* main.m */; };
@@ -28,6 +27,8 @@
 		82E898E91B7B6F0100DBDDC5 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82E898E71B7B6F0100DBDDC5 /* DetailsViewController.xib */; };
 		82E898EB1B7B702C00DBDDC5 /* right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E898EA1B7B702C00DBDDC5 /* right@2x.png */; };
 		82E898ED1B7B706E00DBDDC5 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E898EC1B7B706E00DBDDC5 /* right.png */; };
+		90911C341B7CFFA50097917F /* BrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90911C321B7CFFA50097917F /* BrowserViewController.m */; };
+		90911C351B7CFFA50097917F /* BrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90911C331B7CFFA50097917F /* BrowserViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +45,6 @@
 		2A5FE6B21B7CA76A004149FA /* QuestionDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionDataModel.h; sourceTree = "<group>"; };
 		2A5FE6B31B7CA76A004149FA /* QuestionDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionDataModel.m; sourceTree = "<group>"; };
 		2A5FE6B51B7CB4E5004149FA /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		2AA53A761B7C809100F6345A /* CustomProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomProgressView.h; sourceTree = "<group>"; };
-		2AA53A771B7C809100F6345A /* CustomProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomProgressView.m; sourceTree = "<group>"; };
 		2AA53A7A1B7C82CF00F6345A /* track_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = track_image.png; sourceTree = "<group>"; };
 		2AA53A7B1B7C82CF00F6345A /* progress_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progress_image.png; sourceTree = "<group>"; };
 		82E898A01B7B42D500DBDDC5 /* Game-ify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game-ify.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +71,9 @@
 		82E898E71B7B6F0100DBDDC5 /* DetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailsViewController.xib; path = Details/DetailsViewController.xib; sourceTree = "<group>"; };
 		82E898EA1B7B702C00DBDDC5 /* right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right@2x.png"; sourceTree = "<group>"; };
 		82E898EC1B7B706E00DBDDC5 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
+		90911C311B7CFFA50097917F /* BrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrowserViewController.h; path = Browser/BrowserViewController.h; sourceTree = "<group>"; };
+		90911C321B7CFFA50097917F /* BrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BrowserViewController.m; path = Browser/BrowserViewController.m; sourceTree = "<group>"; };
+		90911C331B7CFFA50097917F /* BrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BrowserViewController.xib; path = Browser/BrowserViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,15 +101,6 @@
 				2A5FE6B31B7CA76A004149FA /* QuestionDataModel.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		2AA53A751B7C804B00F6345A /* CustomProgress */ = {
-			isa = PBXGroup;
-			children = (
-				2AA53A761B7C809100F6345A /* CustomProgressView.h */,
-				2AA53A771B7C809100F6345A /* CustomProgressView.m */,
-			);
-			path = CustomProgress;
 			sourceTree = "<group>";
 		};
 		2AA53A791B7C829000F6345A /* Resources */ = {
@@ -142,7 +135,7 @@
 		82E898A21B7B42D500DBDDC5 /* Game-ify */ = {
 			isa = PBXGroup;
 			children = (
-				2AA53A751B7C804B00F6345A /* CustomProgress */,
+				90911C361B7CFFAC0097917F /* Browser */,
 				82E898E11B7B6E2E00DBDDC5 /* Details */,
 				82E898D31B7B4D7300DBDDC5 /* Images */,
 				82E898D21B7B4BC000DBDDC5 /* NetWorkManager */,
@@ -223,6 +216,16 @@
 				82E898E71B7B6F0100DBDDC5 /* DetailsViewController.xib */,
 			);
 			name = Details;
+			sourceTree = "<group>";
+		};
+		90911C361B7CFFAC0097917F /* Browser */ = {
+			isa = PBXGroup;
+			children = (
+				90911C311B7CFFA50097917F /* BrowserViewController.h */,
+				90911C321B7CFFA50097917F /* BrowserViewController.m */,
+				90911C331B7CFFA50097917F /* BrowserViewController.xib */,
+			);
+			name = Browser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +313,7 @@
 				82E898DD1B7B593100DBDDC5 /* Default@2x.png in Resources */,
 				82E898DC1B7B593100DBDDC5 /* Default.png in Resources */,
 				2AA53A7C1B7C82CF00F6345A /* track_image.png in Resources */,
+				90911C351B7CFFA50097917F /* BrowserViewController.xib in Resources */,
 				82E898D71B7B53E600DBDDC5 /* buttonImage.png in Resources */,
 				82E898ED1B7B706E00DBDDC5 /* right.png in Resources */,
 				82E898EB1B7B702C00DBDDC5 /* right@2x.png in Resources */,
@@ -338,8 +342,8 @@
 				82E898A91B7B42D500DBDDC5 /* AppDelegate.m in Sources */,
 				82E898E01B7B5EC200DBDDC5 /* DataManager.m in Sources */,
 				2A5FE6B41B7CA76A004149FA /* QuestionDataModel.m in Sources */,
-				2AA53A781B7C809100F6345A /* CustomProgressView.m in Sources */,
 				82E898A61B7B42D500DBDDC5 /* main.m in Sources */,
+				90911C341B7CFFA50097917F /* BrowserViewController.m in Sources */,
 				82E898E81B7B6F0100DBDDC5 /* DetailsViewController.m in Sources */,
 				82E898D01B7B43BA00DBDDC5 /* HomeViewController.m in Sources */,
 			);
